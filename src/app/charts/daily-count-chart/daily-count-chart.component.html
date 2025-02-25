@@ -1,0 +1,8 @@
+<div class="chart-wrapper">
+    <div *ngIf="isLoading" class="loading">Loading daily counts...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <ngx-charts-bar-vertical *ngIf="!isLoading && !error" [results]="chartData" [view]="[chartWidth, chartHeight]"
+        [legend]="false" [xAxis]="true" [yAxis]="true" [showDataLabel]="true" [animations]="true"
+        [showXAxisLabel]="true" xAxisLabel="Reservations" [showYAxisLabel]="true" yAxisLabel="Date" [roundEdges]="true">
+    </ngx-charts-bar-vertical>
+</div>

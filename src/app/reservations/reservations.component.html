@@ -1,0 +1,61 @@
+<div class="reservations-container">
+    <div class="reservations-header">
+        <div class="search-bar">
+            <input type="text" placeholder="Search by ID and gastId" [(ngModel)]="searchTerm"
+                (input)="onSearchChange()" />
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <label for="statusFilter">Status:</label>
+        <select id="statusFilter" [(ngModel)]="statusFilter" (change)="onStatusChange()">
+            <option value="">All Status</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="pending">Pending</option>
+            <option value="canceled">Cancelled</option>
+            <option value="finished">Finished</option>
+        </select>
+    </div>
+
+    <div *ngIf="isLoading" class="loading">Loading reservations...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div class="table-wrapper" *ngIf="!isLoading && !error">
+        <table>
+            <thead>
+                <tr>
+                    <th (click)="onSort('id')">#</th>
+                    <th (click)="onSort('betriebid')">Betrieb Id</th>
+                    <th (click)="onSort('gastId')">Gast Id</th>
+                    <th (click)="onSort('status')">Status</th>
+                    <th (click)="onSort('peopleCount')">People</th>
+                    <th (click)="onSort('reservedFor')">Reserved For</th>
+                    <th (click)="onSort('source')">Source</th>
+                    <th (click)="onSort('createdAt')">Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of reservations">
+                    <td>{{ r.id }}</td>
+                    <td>{{ r.betriebId }}</td>
+                    <td>{{ r.gastId }}</td>
+                    <td>{{ r.status }}</td>
+                    <td>{{ r.peopleCount }}</td>
+                    <td>{{ r.reservedFor }}</td>
+                    <td>{{ r.source }}</td>
+                    <td>{{ r.createdAt }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination" *ngIf="totalPages > 1 && !isLoading && !error">
+        <span>Items per page: {{ pageSize }}</span>
+        <div>
+            <button (click)="goToPage(currentPage - 1)">Prev</button>
+            <span>{{ currentPage }} / {{ totalPages }}</span>
+            <button (click)="goToPage(currentPage + 1)">Next</button>
+        </div>
+    </div>
+</div>

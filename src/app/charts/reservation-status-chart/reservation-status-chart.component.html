@@ -1,0 +1,15 @@
+<div class="chart-container">
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <ngx-charts-pie-chart *ngIf="!isLoading && !error" [results]="chartData" [scheme]="colorScheme"
+        [view]="[chartWidth, chartHeight]" [legend]="screenWidth >= 768" [labels]="true" [doughnut]="true"
+        [arcWidth]="0.3" [explodeSlices]="false" [animations]="true">
+    </ngx-charts-pie-chart>
+    <div class="mobile-legend" *ngIf="screenWidth < 768">
+        <div class="legend-item" *ngFor="let item of chartData">
+            <!-- Use getColor() to match the slice colors -->
+            <span class="legend-marker" [style.backgroundColor]="getColor(item.name)"></span>
+            <span class="legend-label">{{ item.name }}</span>
+        </div>
+    </div>
+</div>

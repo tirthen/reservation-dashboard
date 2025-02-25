@@ -1,0 +1,13 @@
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="brand">
+            <img src="assets/booking.png" alt="Logo" class="brand-logo" />
+            <span class="brand-name">Reservation</span>
+        </div>
+        <!-- Only display nav links if showLinks is true -->
+        <ul class="navbar-links" *ngIf="showLinks">
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <li><a routerLink="/reservations">Reservations</a></li>
+        </ul>
+    </div>
+</nav>

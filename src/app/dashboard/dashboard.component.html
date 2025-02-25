@@ -1,0 +1,47 @@
+<div class="dashboard">
+    <h2>Dashboard</h2>
+
+    <!-- Dashboard Stats Cards -->
+    <div *ngIf="isLoadingStats" class="loading">Loading stats...</div>
+    <div *ngIf="statsError" class="error">{{ statsError }}</div>
+    <div class="card-row" *ngIf="!isLoadingStats && !statsError">
+        <app-card title="Total Reservations" [value]="stats.totalReservations" icon="fa fa-users"></app-card>
+        <app-card title="Confirmed Reservations" [value]="stats.confirmedReservations"
+            icon="fa fa-check-circle"></app-card>
+        <app-card title="Pending Reservations" [value]="stats.pendingReservations" icon="fa fa-clock"></app-card>
+        <app-card title="Cancelled Reservations" [value]="stats.cancelledReservations"
+            icon="fa fa-times-circle"></app-card>
+        <app-card title="Finished Count" [value]="stats.finishedCount" icon="fa fa-flag-checkered"></app-card>
+        <app-card title="Total Guests Today" [value]="stats.totalGuestsToday" icon="fa fa-calendar-check-o"></app-card>
+    </div>
+
+    <!-- People Count & Revenue Cards -->
+    <div *ngIf="isLoadingPeople" class="loading">Loading people count...</div>
+    <div *ngIf="peopleError" class="error">{{ peopleError }}</div>
+    <div *ngIf="isLoadingRevenue" class="loading">Loading revenue...</div>
+    <div *ngIf="revenueError" class="error">{{ revenueError }}</div>
+    <div class="card-row" *ngIf="!isLoadingPeople && !peopleError && !isLoadingRevenue && !revenueError">
+        <app-card title="Total Guests" [value]="peopleCount.totalGuests" icon="fa fa-user-friends"></app-card>
+        <app-card title="Children" [value]="peopleCount.children" icon="fa fa-child"></app-card>
+        <app-card title="High Chairs" [value]="peopleCount.highChairs" icon="fa fa-chair"></app-card>
+        <app-card title="Total Revenue" [value]="revenue.totalRevenue" icon="fa fa-money"></app-card>
+    </div>
+
+    <!-- Charts -->
+    <div class="chart-container">
+        <h3>Reservation Status</h3>
+        <app-reservation-status-chart></app-reservation-status-chart>
+    </div>
+    <div class="chart-container">
+        <h3>Daily Reservation Counts</h3>
+        <app-daily-count-chart></app-daily-count-chart>
+    </div>
+    <div class="chart-container">
+        <h3>Room Occupancy</h3>
+        <app-room-occupancy-chart></app-room-occupancy-chart>
+    </div>
+    <div class="chart-container">
+        <h3>Top Referrers</h3>
+        <app-top-referrers-chart></app-top-referrers-chart>
+    </div>
+</div>

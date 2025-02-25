@@ -1,0 +1,48 @@
+.chart-container {
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.loading {
+  color: #007bff;
+}
+
+.error {
+  color: red;
+}
+
+/* Custom legend on mobile */
+.mobile-legend {
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.legend-marker {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.legend-label {
+  font-size: 0.9rem;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

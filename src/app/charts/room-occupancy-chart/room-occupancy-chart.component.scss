@@ -1,0 +1,49 @@
+.chart-container {
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* Built-in legend is hidden below 768px by the [legend] binding,
+   so we only style it for bigger screens if you want to. */
+::ng-deep .ngx-charts-legend.chart-legend {
+  /* Example: make it 150px wide on bigger screens */
+  flex: 0 0 150px;
+}
+
+/* The custom legend always visible on mobile (below the chart) */
+.mobile-legend {
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Legend items in a vertical list */
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* The color box */
+.legend-marker {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Legend label text */
+.legend-label {
+  font-size: 0.9rem;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
