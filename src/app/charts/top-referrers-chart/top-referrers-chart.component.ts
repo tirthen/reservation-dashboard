@@ -37,7 +37,7 @@ export class TopReferrersChartComponent implements OnInit, OnDestroy {
         // Sort descending by count if you prefer
         data.sort((a, b) => b.count - a.count);
         this.chartData = data.map(item => ({
-          name: item.referrer || 'Unknown',
+          name: item.referrer ? item.referrer.split('|').slice(1).join('|').trim() : 'Unknown',
           value: item.count
         }));
         this.isLoading = false;
@@ -73,3 +73,4 @@ export class TopReferrersChartComponent implements OnInit, OnDestroy {
     }
   }
 }
+
